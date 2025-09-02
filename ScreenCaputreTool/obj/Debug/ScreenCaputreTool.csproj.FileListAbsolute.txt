@@ -1,0 +1,15 @@
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\bin\Debug\ScreenCaputreTool.exe.config
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\bin\Debug\ScreenCaputreTool.exe
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\bin\Debug\ScreenCaputreTool.pdb
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\obj\Debug\ScreenCaputreTool.csproj.AssemblyReference.cache
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\obj\Debug\ScreenCaputreTool.csproj.SuggestedBindingRedirects.cache
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\obj\Debug\MainWindow.baml
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\obj\Debug\MainWindow.g.cs
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\obj\Debug\App.g.cs
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\obj\Debug\ScreenCaputreTool_MarkupCompile.cache
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\obj\Debug\ScreenCaputreTool.g.resources
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\obj\Debug\ScreenCaputreTool.Properties.Resources.resources
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\obj\Debug\ScreenCaputreTool.csproj.GenerateResource.cache
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\obj\Debug\ScreenCaputreTool.csproj.CoreCompileInputs.cache
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\obj\Debug\ScreenCaputreTool.exe
+E:\Personal\Project\Progam\ScreenCaputreTool\ScreenCaputreTool\obj\Debug\ScreenCaputreTool.pdb

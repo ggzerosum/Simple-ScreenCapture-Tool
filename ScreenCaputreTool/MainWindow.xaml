@@ -1,0 +1,92 @@
+﻿<Window x:Class="WpfClipboardCapture.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:WpfClipboardCapture"
+        Title="WPF 클립보드 캡처"
+        WindowStartupLocation="CenterScreen" Topmost="True"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        MouseDown="Window_MouseDown"
+        ResizeMode="CanResizeWithGrip"
+        MinWidth="320" MinHeight="180"> <!-- 최소 너비와 높이 설정 -->
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+    </Window.Resources>
+    
+    <Border Background="#F0FFFFFF" CornerRadius="10" BorderBrush="LightGray" BorderThickness="1" Padding="10">
+        <Grid>
+            <Button x:Name="closeButton" Content="✕" 
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Width="20" Height="20" Margin="0,-5,-5,0" 
+                    BorderThickness="0" Background="Transparent" 
+                    Foreground="Gray" FontWeight="Bold"
+                    Click="CloseButton_Click"/>
+            
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top" Margin="0,15,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" x:Name="captureButton" Content="캡처 시작" Height="40" Margin="5" Click="CaptureButton_Click"/>
+                        <Button Grid.Column="1" x:Name="settingsButton" Content="⚙️" Height="40" Width="40" Margin="0,5,5,5" Click="SettingsButton_Click" ToolTip="설정" FontSize="16"/>
+                    </Grid>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                        <TextBlock Text="포맷:" VerticalAlignment="Center"/>
+                        <RadioButton x:Name="rbPng" Content="PNG" IsChecked="True" Margin="5" VerticalAlignment="Center"/>
+                        <RadioButton x:Name="rbJpg" Content="JPG" Margin="5" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Grid x:Name="qualityGrid" Margin="5" Visibility="{Binding ElementName=rbJpg, Path=IsChecked, Converter={StaticResource BoolToVisConverter}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="JPG 품질:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <Slider x:Name="qualitySlider" Grid.Column="1" Minimum="1" Maximum="100" Value="90" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="{Binding ElementName=qualitySlider, Path=Value, StringFormat=N0}" VerticalAlignment="Center" Margin="5,0,0,0" MinWidth="25"/>
+                    </Grid>
+                </StackPanel>
+                
+                <!-- 동적 미리보기 영역 -->
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="0,10,0,0">
+                    <ItemsControl ItemsSource="{Binding RecentCaptures}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type local:CaptureHistoryItem}">
+                                <Grid Margin="3" MaxWidth="90" MaxHeight="105" Cursor="Hand" MouseLeftButtonDown="PreviewItem_MouseLeftButtonDown" Background="Transparent">
+                                    <StackPanel>
+                                        <Canvas Width="{Binding PreviewCanvasWidth}" 
+                                                Height="{Binding PreviewCanvasHeight}" 
+                                                Background="#FFEAEAEA" 
+                                                HorizontalAlignment="Center">
+                                            
+                                            <Image Source="{Binding Image}" 
+                                                   Width="{Binding PreviewImageWidth}" 
+                                                   Height="{Binding PreviewImageHeight}"
+                                                   Canvas.Left="{Binding PreviewImageX}"
+                                                   Canvas.Top="{Binding PreviewImageY}"/>
+                                        </Canvas>
+                                        
+                                        <TextBlock Text="{Binding FileSize}" HorizontalAlignment="Center" Background="#80000000" Foreground="White" Padding="3" FontSize="9"/>
+                                    </StackPanel>
+                                    
+                                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Background="#A0000000" CornerRadius="10" Width="20" Height="20" Margin="2">
+                                        <TextBlock Text="{Binding CaptureNumber}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </DockPanel>
+        </Grid>
+    </Border>
+</Window>

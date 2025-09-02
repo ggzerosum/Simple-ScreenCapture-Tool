@@ -1,0 +1,25 @@
+<Window x:Class="WpfClipboardCapture.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="설정" Width="280" Height="150"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+            <Label Content="최대 미리보기 갯수 (최소 3):"/>
+            <TextBox x:Name="historyLimitTextBox" Width="50" VerticalAlignment="Center" TextAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="okButton" Content="확인" Width="60" Margin="5" Click="OkButton_Click" IsDefault="True"/>
+            <Button x:Name="cancelButton" Content="취소" Width="60" Margin="5" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>
