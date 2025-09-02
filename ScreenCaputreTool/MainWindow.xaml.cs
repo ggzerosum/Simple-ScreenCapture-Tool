@@ -313,7 +313,6 @@ namespace WpfClipboardCapture
         }
     }
     
-    // CaptureWindow 클래스는 변경 사항 없음
     public class CaptureWindow : Window
     {
         public Int32Rect SelectedRegion { get; private set; }
@@ -324,9 +323,18 @@ namespace WpfClipboardCapture
         {
             WindowStyle = WindowStyle.None;
             ResizeMode = ResizeMode.NoResize;
-            WindowState = WindowState.Maximized;
+            // WindowState = WindowState.Maximized; // 이 부분을 제거합니다.
             Topmost = true;
             Cursor = Cursors.Cross;
+
+            // --- 수정된 부분 ---
+            // 창의 위치와 크기를 전체 가상 화면에 맞게 직접 설정합니다.
+            this.Left = SystemParameters.VirtualScreenLeft;
+            this.Top = SystemParameters.VirtualScreenTop;
+            this.Width = SystemParameters.VirtualScreenWidth;
+            this.Height = SystemParameters.VirtualScreenHeight;
+            // --- 여기까지 ---
+
             var mainGrid = new Grid();
             mainGrid.Background = new ImageBrush(screenBackground);
             this.Content = mainGrid;
